@@ -59,3 +59,4 @@ import { setupCounter } from './counter.js'
 
 (document.querySelector('Biologybtn')) 
 
+IM AN IDIOT
