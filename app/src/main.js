@@ -404,8 +404,10 @@ const mathematicsbtn = document.querySelector('.Mathematicsbtn');
 const culturebtn = document.querySelector('.Culturebtn');
 const technologybtn = document.querySelector('.Technologybtn'); 
 
-function displayquestions(triviaquestion) {
-  
 
+function displayquestions(genre) {
+//filter array by genre
+const filterquestion = question.filter((book) => question.genre === genre);
+//remove old question html
+//put question on screen
 }
- 
