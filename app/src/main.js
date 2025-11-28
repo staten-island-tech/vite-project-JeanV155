@@ -405,9 +405,26 @@ const culturebtn = document.querySelector('.Culturebtn');
 const technologybtn = document.querySelector('.Technologybtn'); 
 
 
-function displayquestions(genre) {
-//filter array by genre
-const filterquestion = question.filter((book) => question.genre === genre);
-//remove old question html
-//put question on screen
+function displayQuestions(genre) {
+  const filtered = trivia.filter(q => q.genre === genre);
+
+  container.innerHTML = "";
+
+  filtered.forEach(q => {
+    container.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="card">
+        <h3>${q.question}</h3>
+        <div class="options">
+          ${q.options.map(opt => `
+            <button class="option-btn" data-correct="${opt === q.answer}">
+              ${opt}
+            </button>
+          `).join("")}
+        </div>
+      </div>
+      `
+    );
+  });
 }
