@@ -412,19 +412,16 @@ function displayQuestions(genre) {
 
   filtered.forEach(q => {
     container.insertAdjacentHTML(
-      "beforeend",
-      `
-      <div class="card">
-        <h3>${q.question}</h3>
-        <div class="options">
-          ${q.options.map(opt => `
-            <button class="option-btn" data-correct="${opt === q.answer}">
-              ${opt}
-            </button>
-          `).join("")}
-        </div>
-      </div>
-      `
-    );
-  });
+     "beforeend",
+    `
+    <div class="card" data-question="${question.question}">
+      <h3 class="card-price">$${question.question.toLocaleString()}</h3>
+    `
+  );
 }
+}
+
+
+question.forEach ((question) => inject(question)); 
+
+
