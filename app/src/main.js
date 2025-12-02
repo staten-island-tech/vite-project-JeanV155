@@ -408,20 +408,16 @@ const technologybtn = document.querySelector('.Technologybtn');
 function displayQuestions(genre) {
   const filtered = trivia.filter(q => q.genre === genre);
 
-  container.innerHTML = "";
-
+  container.innerHTML = ""; // clear previous questions
+  
   filtered.forEach(q => {
     container.insertAdjacentHTML(
-     "beforeend",
-    `
-    <div class="card" data-question="${question.question}">
-      <h3 class="card-price">$${question.question.toLocaleString()}</h3>
-    `
-  );
+      "beforeend",
+      `
+      <div class="card">
+        <p>${q.question}</p>
+      </div>
+      `
+    );
+  });
 }
-}
-
-
-question.forEach ((question) => inject(question)); 
-
-
