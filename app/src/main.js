@@ -406,18 +406,22 @@ const technologybtn = document.querySelector('.Technologybtn');
 
 
 function displayQuestions(genre) {
+  // filter questions by genre
   const filtered = trivia.filter(q => q.genre === genre);
 
-  container.innerHTML = ""; // clear previous questions
-  
-  filtered.forEach(q => {
-    container.insertAdjacentHTML(
-      "beforeend",
-      `
-      <div class="card">
-        <p>${q.question}</p>
-      </div>
-      `
-    );
-  });
+  // pick a random question
+  const question = filtered[Math.floor(Math.random() * filtered.length)];
+
+  // display it in the HTML
+  const container = document.querySelector('.question-container');
+
+  container.innerHTML = `
+    <h2>${question.question}</h2>
+    <ul>
+      ${question.options.map(opt => `<li>${opt}</li>`).join("")}
+    </ul>
+  `;
 }
+
+
+  
