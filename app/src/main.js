@@ -416,12 +416,9 @@ function displayQuestions(genre) {
   const container = document.querySelector('.question-container');
 
   container.innerHTML = `
-    <h2>${question.question}</h2>
-    <ul>
-      ${question.options.map(opt => `<li>${opt}</li>`).join("")}
-    </ul>
-  `;
-}
+   
+} 
+   const 
 
 
   
