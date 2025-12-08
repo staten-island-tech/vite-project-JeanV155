@@ -390,7 +390,7 @@ const trivia = [
     options: ["Central Processing Unit", "Computer Power Unit", "Central Program Utility", "Control Processing Unit"],
     tags: ["Computers"],
     explanation: "The CPU is the brain of a computer."
-  }
+  } 
 
 ];
 
@@ -402,23 +402,39 @@ const historybtn = document.querySelector('.Historybtn');
 const literaturebtn = document.querySelector('.Literaturebtn');
 const mathematicsbtn = document.querySelector('.Mathematicsbtn');
 const culturebtn = document.querySelector('.Culturebtn');
-const technologybtn = document.querySelector('.Technologybtn'); 
-
+const technologybtn = document.querySelector('.Technologybtn');
 
 function displayQuestions(genre) {
-  // filter questions by genre
+  // Filter by genre
   const filtered = trivia.filter(q => q.genre === genre);
 
-  // pick a random question
+  // Pick a random one
   const question = filtered[Math.floor(Math.random() * filtered.length)];
 
-  // display it in the HTML
   const container = document.querySelector('.question-container');
 
-  container.innerHTML = `
-   
-} 
-   const 
+  // Display question with choices
+  container.innerHTML = "" 
+
+  
+
+
+
+  // Check answers
+}
+
+// BUTTON EVENTS
+geographybtn.addEventListener("click", () => displayQuestions("Geography"));
+artbtn.addEventListener("click", () => displayQuestions("Art"));
+sciencebtn.addEventListener("click", () => displayQuestions("Science"));
+biologybtn.addEventListener("click", () => displayQuestions("Biology"));
+historybtn.addEventListener("click", () => displayQuestions("History"));
+literaturebtn.addEventListener("click", () => displayQuestions("Literature"));
+mathematicsbtn.addEventListener("click", () => displayQuestions("Mathematics"));
+culturebtn.addEventListener("click", () => displayQuestions("Culture"));
+technologybtn.addEventListener("click", () => displayQuestions("Technology"));
+
+
 
 
   
