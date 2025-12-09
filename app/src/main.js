@@ -256,7 +256,7 @@ const trivia = [
   { 
     id: 12,
     question: "Which ancient civilization built Machu Picchu?",
-    answer: "The Inca Empire",
+    answer: " Inca",
     genre: "History",
     difficulty: "Medium",
     options: ["Maya", "Aztec", "Inca", "Olmec"],
@@ -286,7 +286,7 @@ const trivia = [
   {
     id: 43,
     question: "Which ancient civilization built the pyramids?",
-    answer: "The Egyptians",
+    answer: "Egyptians",
     genre: "History",
     difficulty: "Easy",
     options: ["Romans", "Greeks", "Egyptians", "Babylonians"],
@@ -393,7 +393,7 @@ const trivia = [
   } 
 
 ];
-
+console.log(4)
 const geographybtn = document.querySelector('.Geographybtn');
 const artbtn = document.querySelector('.Artbtn');
 const sciencebtn = document.querySelector('.Sciencebtn');
@@ -405,23 +405,61 @@ const culturebtn = document.querySelector('.Culturebtn');
 const technologybtn = document.querySelector('.Technologybtn');
 
 function displayQuestions(genre) {
-  // Filter by genre
+  console.log(1)
   const filtered = trivia.filter(q => q.genre === genre);
-
-  // Pick a random one
-  const question = filtered[Math.floor(Math.random() * filtered.length)];
-
   const container = document.querySelector('.question-container');
+  container.innerHTML = "";       // clear previous
 
-  // Display question with choices
-  container.innerHTML = "" 
-
-  
-
-
-
-  // Check answers
+  filtered.forEach(question => {
+    container.insertAdjacentHTML('beforeend', `
+      <div class="card question-card" data-id="${question.id}">
+        <h2 class="card-header">${question.question}</h2>
+        <ul class="options">
+          ${question.options.map(opt => `
+            <li><button class=""
+                        data-answer="${opt}"
+                        data-correct="${question.answer}">
+              ${opt}
+            </button></li>
+          `).join('')}
+        </ul>
+        <div class="feedback"></div>
+      </div>
+    `);
+  });
 }
+  
+document.addEventListener("click", function (e) {
+  if (e.target.matches("button[data-answer]")) {
+
+    const btn = e.target;
+    const selected = btn.dataset.answer;
+    const correct = btn.dataset.correct;
+
+    const card = btn.closest(".question-card");
+    const feedback = card.querySelector(".feedback");
+
+    // Disable all options for this question
+    card.querySelectorAll("button[data-answer]").forEach(button => {
+      button.disabled = true;
+    });
+
+    // If correct
+    if (selected === correct) {
+      btn.style.backgroundColor = "lightgreen";
+      feedback.textContent = "Correct!";
+      feedback.style.color = "green";
+    }
+
+    // If wrong
+    else {
+      btn.style.backgroundColor = "salmon";
+      feedback.textContent = `Wrong! Correct answer: ${correct}`;
+      feedback.style.color = "red";
+    }
+  }
+});
+
 
 // BUTTON EVENTS
 geographybtn.addEventListener("click", () => displayQuestions("Geography"));
