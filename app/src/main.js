@@ -458,6 +458,12 @@ document.addEventListener("click", function (e) {
       feedback.style.color = "red";
     }
   }
+}); 
+
+const lightdark = document.querySelector(".lightDark");
+
+lightdark.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
 });
 
 
